@@ -14,7 +14,7 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @Path("/gog")
-public class GogResource {
+public class GogResource implements si.fri.rso.GogService {
 
     @RestClient
     EmbedGogService embedGogService;
@@ -23,12 +23,14 @@ public class GogResource {
     @Inject
     GogMapper gogMapper;
 
+    @Override
     @GET
     @Path("/games")
-    public List<GameBySearchDto> getGamesBySearch(@QueryParam("searchString")String searchString) {
+    public List<GameBySearchDto> getGamesBySearch(@QueryParam("searchString") String searchString) {
         return gogMapper.toGameBySearchDto(embedGogService.getGamesBySearch("game",searchString));
     }
 
+    @Override
     @GET
     @Path("/prices")
     public  List<GamePriceDto> getGamePrices(@QueryParam("ids") List<String> ids) {
