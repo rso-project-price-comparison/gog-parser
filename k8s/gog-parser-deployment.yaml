@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gog-parser-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gog-parser
+  template:
+    metadata:
+      labels:
+        app: gog-parser
+    spec:
+      containers:
+        - image: tjasad/rso-gog-parser:2022-12-02-18-23-53
+          name: gog-parser
+          resources:
+            limits:
+              memory: 512Mi
+          ports:
+            - containerPort: 8080
+              name: server
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gog-parser
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: gog-parser
