@@ -13,7 +13,7 @@ spec:
         app: gog-parser
     spec:
       containers:
-        - image: tjasad/rso-gog-parser:2022-12-02-18-23-53
+        - image: tjasad/rso-gog-parser:latest
           name: gog-parser
           resources:
             limits:
@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: gog-parser
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       protocol: TCP
