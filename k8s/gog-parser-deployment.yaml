@@ -18,6 +18,9 @@ spec:
           resources:
             limits:
               memory: 512Mi
+          env:
+            - name: QUARKUS_PROFILE
+              value: production
           ports:
             - containerPort: 8080
               name: server
