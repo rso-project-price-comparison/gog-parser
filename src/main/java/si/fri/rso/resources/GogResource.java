@@ -1,5 +1,6 @@
 package si.fri.rso.resources;
 
+import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -31,6 +32,10 @@ public interface GogResource {
     List<GameBySearchDto> getGamesBySearch(@QueryParam("searchString") String searchString);
 
     @GET
+    @Path("/game/fallback")
+    List<GameBySearchDto> getGamesBySearchStringFallback(@QueryParam("searchString") String searchString);
+
+    @GET
     @Path("/price")
     @Operation(summary = "Get prices of games.")
     @APIResponses(value = {
@@ -39,5 +44,5 @@ public interface GogResource {
                             schema = @Schema(implementation = GamePriceDto.class, type = SchemaType.ARRAY))}),
             @APIResponse(responseCode = "400", description = "Query parameter ids is required",
                     content = @Content)})
-    List<GamePriceDto> getGamePrices(@QueryParam("ids") List<String> ids);
+    Uni<List<GamePriceDto>> getGamePrices(@QueryParam("ids") List<String> ids);
 }

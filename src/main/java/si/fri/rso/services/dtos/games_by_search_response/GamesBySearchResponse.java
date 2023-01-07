@@ -1,17 +1,18 @@
 package si.fri.rso.services.dtos.games_by_search_response;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 public record GamesBySearchResponse(
 
-	@JsonProperty("totalResults")
-	String totalResults,
+		@JsonProperty("totalResults")
+		String totalResults,
 
-	@JsonProperty("totalPages")
-	int totalPages,
+		@JsonProperty("totalPages")
+		int totalPages,
 
-	@JsonProperty("page")
+		@JsonProperty("page")
 	int page,
 
 	@JsonProperty("totalGamesFound")

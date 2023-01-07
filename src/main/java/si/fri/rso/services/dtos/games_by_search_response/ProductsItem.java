@@ -1,17 +1,18 @@
 package si.fri.rso.services.dtos.games_by_search_response;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 public record ProductsItem(
 
-	@JsonProperty("buyable")
-	boolean buyable,
+		@JsonProperty("buyable")
+		boolean buyable,
 
-	@JsonProperty("isDiscounted")
-	boolean isDiscounted,
+		@JsonProperty("isDiscounted")
+		boolean isDiscounted,
 
-	@JsonProperty("supportedOperatingSystems")
+		@JsonProperty("supportedOperatingSystems")
 	List<String> supportedOperatingSystems,
 
 	@JsonProperty("salesVisibility")
