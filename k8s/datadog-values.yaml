@@ -1,5 +1,6 @@
 targetSystem: "linux"
 datadog:
+  site: datadoghq.eu
   apiKeyExistingSecret: datadog-secret
   appKeyExistingSecret: datadog-secret
   clusterName: budget-gamer-cluster
@@ -8,4 +9,4 @@ datadog:
     containerCollectAll: true
   processAgent:
     enabled: true
-    processCollection: false
+    processCollection: true
